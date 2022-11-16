@@ -3,7 +3,7 @@
 const MASTODON_DIV = document.getElementById("mastodon");
 const EXTERNAL_USER_REGEX = /(@[a-zA-Z0-9_]+)(?!.*@)/; // @username matches, @username@test.social doesn't
 const EXTERNAL_POST_REGEX = /(@[a-zA-Z0-9_]+)(?!.*@)\/(\d+)/; // @username matches, @username@test.social doesn't
-
+console.log("hello");
 if (MASTODON_DIV) {
   // Then the magic
   function onError(error) {

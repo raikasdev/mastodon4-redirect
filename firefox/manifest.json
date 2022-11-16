@@ -1,0 +1,30 @@
+{
+  "manifest_version": 2,
+  "name": "Mastodon4 Redirect",
+  "version": "1.1",
+  "description": "Redirects users from Mastodon4 supported instances to their home instance",
+  "icons": {
+    "48": "icon.svg",
+    "96": "icon.svg"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["src/m4redirect.js"]
+    }
+  ],
+  "options_ui": {
+    "page": "src/options.html"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "background": {
+    "scripts": ["src/background.js"]
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "mastodon4-redirect@raikas.dev"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+  </head>
+
+  <body>
+    <h1>Thank you for using Mastodon4 Redirect!</h1>
+    <p>Notice! If you are not logged in in your home instance, you will get redirected back to old page, resulting in a loop!</p>
+    <form>
+      <label>
+        <b>Home instance URL (https://instance.social)</b>
+        <br />
+        <input placeholder="https://mastodon.social" type="url" id="url" name="url" />
+      </label>
+      <br />
+      <button type="submit">Save</button>
+      <br />
+      <p id="saved" style="display: none;color:green;">Saved!</p>
+    </form>
+
+    <script src="options.js"></script>
+
+    <style>
+      input {
+        padding:10px;
+        margin:10px 0;
+        border: 0.1px;
+        box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+        border-radius: 10px;
+      }
+
+      button {
+        padding:10px;
+        border: 0;
+        box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+        background-color: #191b22;
+        color: white;
+        border-radius: 10px;
+      }
+    </style>
+  </body>
+</html>
