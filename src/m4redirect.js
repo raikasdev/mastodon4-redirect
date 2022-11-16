@@ -7,7 +7,7 @@ const EXTERNAL_POST_REGEX = /(@[a-zA-Z0-9_]+)(?!.*@)\/(\d+)/; // @username match
 if (MASTODON_DIV) {
   // Then the magic
   function onError(error) {
-    console.log(`Error: ${error}`);
+    console.error(`Error: ${error}`);
   }
 
   function onGot(item) {
@@ -30,16 +30,13 @@ if (MASTODON_DIV) {
       if (window.location.pathname.match(EXTERNAL_POST_REGEX)) {
         url.pathname = `/authorize_interaction`;
         url.searchParams.set("uri", window.location.href);
-        console.log(url.toString());
         window.location.replace(url.toString());
       } else if (window.location.pathname.match(EXTERNAL_USER_REGEX)) {
-        console.log(window.location.pathname.match(EXTERNAL_USER_REGEX));
         const username = `${
           window.location.pathname.match(EXTERNAL_USER_REGEX)[1]
         }@${window.location.hostname}`;
 
         url.pathname = `/${username}`;
-        console.log(url.toString());
         window.location.replace(url.toString());
       }
     }
