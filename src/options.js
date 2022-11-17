@@ -1,8 +1,13 @@
+// Firefox<->Chrome compatibility hack
+var browser;
+var chrome;
+
 function saveOptions(e) {
   e.preventDefault();
-  browser.storage.sync.set({
+  (browser || chrome).storage.sync.set({
     url: document.querySelector("#url").value,
   });
+  document.getElementById("saved").style.display = "block";
 }
 
 function restoreOptions() {
@@ -15,7 +20,7 @@ function restoreOptions() {
     console.log(`Error: ${error}`);
   }
 
-  let getting = browser.storage.sync.get("url");
+  let getting = (browser || chrome).storage.sync.get("url");
   getting.then(setCurrentChoice, onError);
 }
 

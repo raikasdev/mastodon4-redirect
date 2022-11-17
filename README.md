@@ -10,3 +10,11 @@ You might not be logged into your home instance, or you haven't configured the a
 ### Why not a background script and webRequest?
 
 Mastodon 4 uses clientside routing. Also Chrome is discontinuing the webrequest API.
+
+## Project structure
+
+/ Root Contains the Firefox manifest and icon
+/src Contains the code
+/chrome Contains the Chrome port (manifest v3 and icons)
+/chrome/src Symbolic link to /src
+/chrome/m4redirect.js Hard link to /src/m4redirect.js (so the src symbolic link works for chrome)

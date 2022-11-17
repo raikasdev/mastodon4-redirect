@@ -1,9 +1,14 @@
+// Firefox<->Chrome compatibility hack
+var browser;
+var chrome;
+
+console.log("tragedy");
 // If someone knows a better way to detect Mastodon4 instances, please send me a message!
 // raikas@techspace.social
 const MASTODON_DIV = document.getElementById("mastodon");
 const EXTERNAL_USER_REGEX = /(@[a-zA-Z0-9_]+)(?!.*@)/; // @username matches, @username@test.social doesn't
 const EXTERNAL_POST_REGEX = /(@[a-zA-Z0-9_]+)(?!.*@)\/(\d+)/; // @username matches, @username@test.social doesn't
-console.log("hello");
+
 if (MASTODON_DIV) {
   // Then the magic
   function onError(error) {
@@ -18,6 +23,12 @@ if (MASTODON_DIV) {
     const url = new URL(homeInstance);
     async function redirectToHome() {
       if (url.hostname === window.location.hostname) return; // We are on the home instance :)
+      if (
+        item.enabled != null &&
+        item.enabled != "true" &&
+        item.enabled !== true
+      )
+        return; // Disabled
       // Lets first parse some generic URLs out of the way
       // For example: /explore and /home
       switch (window.location.pathname) {
@@ -58,6 +69,6 @@ if (MASTODON_DIV) {
     );
   }
 
-  const getting = chrome.storage.sync.get("url");
+  const getting = (browser || chrome).storage.sync.get(["url", "enabled"]);
   getting.then(onGot, onError);
 }

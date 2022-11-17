@@ -1,11 +1,14 @@
 {
   "manifest_version": 2,
   "name": "Mastodon4 Redirect",
-  "version": "1.1",
+  "version": "1.2",
   "description": "Redirects users from Mastodon4 supported instances to their home instance",
   "icons": {
     "48": "icon.svg",
     "96": "icon.svg"
+  },
+  "browser_action": {
+    "default_popup": "src/popup.html"
   },
   "content_scripts": [
     {
