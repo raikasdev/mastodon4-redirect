@@ -23,7 +23,6 @@ function restoreOptions() {
     console.log(`Error: ${error}`);
   }
 
-  (browser || chrome).storage.sync.get().then(console.log);
   let getting = (browser || chrome).storage.sync.get("enabled");
   getting.then(setCurrentChoice, onError);
 }

@@ -2,7 +2,6 @@
 var browser;
 var chrome;
 
-console.log("tragedy");
 // If someone knows a better way to detect Mastodon4 instances, please send me a message!
 // raikas@techspace.social
 const MASTODON_DIV = document.getElementById("mastodon");
