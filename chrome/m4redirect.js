@@ -26,17 +26,10 @@ if (MASTODON_DIV) {
         item.enabled != null &&
         item.enabled != "true" &&
         item.enabled !== true
-      )
+      ) {
         return; // Disabled
-      // Lets first parse some generic URLs out of the way
-      // For example: /explore and /home
-      switch (window.location.pathname) {
-        case "/explore":
-        case "/home":
-          url.pathname = "/home";
-          window.location.replace(url.toString());
-          break;
       }
+      // Match users and posts and redirect if needed
       if (window.location.pathname.match(EXTERNAL_POST_REGEX)) {
         url.pathname = `/authorize_interaction`;
         url.searchParams.set("uri", window.location.href);
