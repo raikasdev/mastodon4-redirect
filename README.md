@@ -1,7 +1,7 @@
 # mastodon4-redirect
 
 [![Image](https://extensionworkshop.com/assets/img/documentation/publish/get-the-addon-178x60px.dad84b42.png)](https://addons.mozilla.org/en-US/firefox/addon/mastodon4-redirect)
-
+[![Image](https://storage.googleapis.com/web-dev-uploads/image/WlD8wC6g8khYWPJUsQceQkhXSlv1/UV4C4ybeBTsZt43U4xis.png)](https://chrome.google.com/webstore/detail/mastodon4-redirect/acbfckpoogjdigldffcbldijhgnjpfnc)
 
 An Browser Extension to redirect users to their home instance.
 Instead of only redirecting only on actions (follow, like, etc), user is automatically redirected to the equilevant page on their home instance.
