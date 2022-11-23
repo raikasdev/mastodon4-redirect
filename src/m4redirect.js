@@ -5,7 +5,7 @@ var chrome;
 // If someone knows a better way to detect Mastodon4 instances, please send me a message!
 // raikas@techspace.social
 const MASTODON_DIV = document.getElementById("mastodon");
-const EXTERNAL_USER_REGEX = /(@[a-zA-Z0-9_]+)(?!.*@)/; // @username matches, @username@test.social doesn't
+const EXTERNAL_USER_REGEX = /^(@[a-zA-Z0-9_]+)(?!.*@)(?!\/.+)$/; // @username matches, @username@test.social @username/following doesn't
 const EXTERNAL_POST_REGEX = /(@[a-zA-Z0-9_]+)(?!.*@)\/(\d+)/; // @username matches, @username@test.social doesn't
 
 if (MASTODON_DIV) {
@@ -29,7 +29,23 @@ if (MASTODON_DIV) {
       ) {
         return; // Disabled
       }
-      // Match users and posts and redirect if needed
+      // Lets first parse some generic URLs out of the way
+      // For example: /explore -> /home
+      // Using switch case if there comes more pages that this should be done to
+      if (
+        item.redirectExplore == null &&
+        item.redirectExplore == "true" &&
+        item.redirectExplore === true
+      ) {
+        switch (window.location.pathname) {
+          case "/explore":
+            url.pathname = "/home";
+            window.location.replace(url.toString());
+            break;
+        }
+      }
+
+      // Then use Regex to find if a page is a user or a post
       if (window.location.pathname.match(EXTERNAL_POST_REGEX)) {
         url.pathname = `/authorize_interaction`;
         url.searchParams.set("uri", window.location.href);
@@ -61,6 +77,10 @@ if (MASTODON_DIV) {
     );
   }
 
-  const getting = (browser || chrome).storage.sync.get(["url", "enabled"]);
+  const getting = (browser || chrome).storage.sync.get([
+    "url",
+    "enabled",
+    "redirectExplore",
+  ]);
   getting.then(onGot, onError);
 }
