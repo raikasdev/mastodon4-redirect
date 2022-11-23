@@ -32,9 +32,10 @@ if (MASTODON_DIV) {
       // Lets first parse some generic URLs out of the way
       // For example: /explore -> /home
       // Using switch case if there comes more pages that this should be done to
+      console.log(item);
       if (
-        item.redirectExplore == null &&
-        item.redirectExplore == "true" &&
+        item.redirectExplore == null ||
+        item.redirectExplore == "true" ||
         item.redirectExplore === true
       ) {
         switch (window.location.pathname) {
