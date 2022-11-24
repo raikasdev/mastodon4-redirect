@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Mastodon4 Redirect",
-  "version": "1.3",
+  "version": "1.4",
   "description": "Redirects users from Mastodon4 supported instances to their home instance",
   "icons": {
     "16": "icon-16.png",
